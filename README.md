@@ -48,22 +48,14 @@ New-AzureRmResourceGroupDeployment -Name docker-win-swarm `
 
 RDP into the Master Node (vm0) and execute the following commands to initialize a Swarm Master.
 
+Example
 ```powershell
-netsh advfirewall firewall add rule name="Open Port 2377" dir=in action=allow protocol=TCP localport=2377
-netsh advfirewall firewall add rule name="Open Port 7946" dir=in action=allow protocol=TCP localport=7946
-netsh advfirewall firewall add rule name="Open Port 7946" dir=in action=allow protocol=UDP localport=7946
-netsh advfirewall firewall add rule name="Open Port 2377" dir=in action=allow protocol=UDP localport=4789
-
 docker swarm init --advertise-addr=10.1.0.5 --listen-addr 10.1.0.5:2377
 ```
 
 RDP into Worker Nodes (vm1) and execute the the following commands to join the worker to the swarm
 
+Example
 ```powershell
-netsh advfirewall firewall add rule name="Open Port 2377" dir=in action=allow protocol=TCP localport=2377
-netsh advfirewall firewall add rule name="Open Port 7946" dir=in action=allow protocol=TCP localport=7946
-netsh advfirewall firewall add rule name="Open Port 7946" dir=in action=allow protocol=UDP localport=7946
-netsh advfirewall firewall add rule name="Open Port 2377" dir=in action=allow protocol=UDP localport=4789
-
 docker swarm join --token <your_token> 10.1.0.5:2377
 ```

@@ -427,7 +427,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('vmName'), copyIndex(), '/BGInfo')]",
+      "name": "[concat(parameters('prefix'), '-', parameters('vmName'), copyIndex(), '/BGInfo')]",
       "apiVersion": "2016-04-30-preview",
       "location": "[resourceGroup().location]",
       "copy": {
@@ -448,7 +448,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('vmName'), copyIndex(), '/CustomScript')]",
+      "name": "[concat(parameters('prefix'), '-', parameters('vmName'), copyIndex(), '/CustomScript')]",
       "apiVersion": "2016-04-30-preview",
       "location": "[resourceGroup().location]",
       "copy": {
