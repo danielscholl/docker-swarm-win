@@ -44,11 +44,17 @@ New-AzureRmResourceGroupDeployment -Name docker-win-swarm `
 
 ### Initialize a Swarm
 
-[Documentation](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/swarm-mode)
+Windows Swarm Mode [Documentation](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/swarm-mode)
 
-RDP into the Master Node (vm0) and execute the following commands to initialize a Swarm Master.
 
-Example
+The loadbalancer Public IP Address is used to RDP into the Servers.
+
+Example:
+<ip>:5000 -- vm0
+<ip>:5001 -- vm1
+
+
+_Swarm Master Init Example_
 ```powershell
 $IP=((ipconfig | findstr [0-9].\.)[0]).Split()[-1]
 docker swarm init --advertise-addr=${IP} --listen-addr ${IP}:2377
@@ -63,10 +69,7 @@ To add a worker to this swarm, run the following command:
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 ```
 
-
-RDP into Worker Nodes (vm1) and execute the command provided by the Swarm Master to join the worker to the swarm
-
-Example
+_Swarm Worker Join Example_
 ```powershell
 docker swarm join --token <your_token> 10.1.0.4:2377
 ```
