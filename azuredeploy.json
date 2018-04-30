@@ -7,9 +7,9 @@
       "metadata": {
         "description": "Small unique string."
       },
+      "defaultValue": "swarm",
       "minLength": 2,
-      "maxLength": 9,
-      "defaultValue": "swarm"
+      "maxLength": 9
     },
     "storageAccountType": {
       "type": "string",
