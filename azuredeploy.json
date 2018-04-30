@@ -8,7 +8,8 @@
         "description": "Small unique string."
       },
       "minLength": 2,
-      "maxLength": 9
+      "maxLength": 9,
+      "default": "swarm"
     },
     "storageAccountType": {
       "type": "string",
@@ -57,24 +58,6 @@
         "description": "Number of VMs to deploy, limit 5 since this sample is using a single storage account"
       },
       "defaultValue": 2
-    },
-    "useImage": {
-      "type": "string",
-      "allowedValues": [
-        "Yes",
-        "No"
-      ],
-      "metadata": {
-        "description": "Select whether an image should be used to create resource."
-      },
-      "defaultValue": "No"
-    },
-    "managedImageId": {
-      "type": "string",
-      "metadata": {
-        "description": "The Windows Image Name"
-      },
-      "defaultValue": ""
     },
     "WindowsOSVersion": {
       "type": "string",
@@ -412,11 +395,10 @@
         },
         "storageProfile": {
           "imageReference": {
-            "id": "[if(equals(parameters('useImage'), 'Yes'), parameters('managedImageId'), json('null'))]",
-            "publisher": "[if(equals(parameters('useImage'), 'Yes'), json('null'), 'MicrosoftWindowsServer')]",
-            "offer": "[if(equals(parameters('useImage'), 'Yes'), json('null'), 'WindowsServer')]",
-            "sku": "[if(equals(parameters('useImage'), 'Yes'), json('null'), parameters('WindowsOSVersion'))]",
-            "version": "[if(equals(parameters('useImage'), 'Yes'), json('null'), 'latest')]"
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "[parameters('WindowsOSVersion')]",
+            "version": "latest"
           },
           "osDisk": {
             "createOption": "FromImage"
