@@ -6,7 +6,7 @@ This repository is a sample solution deploying IaaS neccessary for a Windows Swa
 
 ### Setup
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdanielscholl%2Fdoc ker-win-swarm%2Fmaster%2Ftemplates%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdanielscholl%2Fdocker-swarm-win%2Fmaster%2Ftemplates%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
