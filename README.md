@@ -45,7 +45,7 @@ New-AzureRmResourceGroupDeployment -Name docker-win-swarm `
 ### Initialize a Swarm
 
 [Documentation](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/swarm-mode)
-=
+
 RDP into the Master Node (vm0) and execute the following commands to initialize a Swarm Master.
 
 ```powershell
