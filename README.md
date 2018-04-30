@@ -2,13 +2,13 @@
 
 This repository is a sample solution deploying IaaS neccessary for a Windows Swarm.
 
-### Prerequisite
+### Automatic Deploy
 
-### Setup
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdanielscholl%2Fdocker-swarm-win%2Fmaster%2Ftemplates%2Fazuredeploy.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdanielscholl%2Fdocker-swarm-win%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
+
+### PowerShell Deploy
 
 1. __Create a Resource Group__
 
@@ -42,9 +42,11 @@ New-AzureRmResourceGroupDeployment -Name docker-win-swarm `
   -ResourceGroupName $ResourceGroupName 
 ```
 
-1. Initialize a Swarm
+### Initialize a Swarm
 
-RDP into the vm0 and execute the following commands to initialize a Swarm Master.
+[Documentation](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/swarm-mode)
+=
+RDP into the Master Node (vm0) and execute the following commands to initialize a Swarm Master.
 
 ```powershell
 netsh advfirewall firewall add rule name="Open Port 2377" dir=in action=allow protocol=TCP localport=2377
@@ -55,7 +57,7 @@ netsh advfirewall firewall add rule name="Open Port 2377" dir=in action=allow pr
 docker swarm init --advertise-addr=10.1.0.5 --listen-addr 10.1.0.5:2377
 ```
 
-RDP into vm1 and execute the the following commands to join the worker to the swarm
+RDP into Worker Nodes (vm1) and execute the the following commands to join the worker to the swarm
 
 ```powershell
 netsh advfirewall firewall add rule name="Open Port 2377" dir=in action=allow protocol=TCP localport=2377
