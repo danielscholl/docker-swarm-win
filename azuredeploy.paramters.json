@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vnetPrefix": {
+      "value": "10.1.0.0/24"
+    },
+    "subnetPrefix": {
+      "value": "10.1.0.0/25"
+    },
+    "remoteAccessACL": {
+      "value": "Internet"
+    },
+    "serverNamePrefix": {
+      "value": "vm"
+    },
+    "vmSize": {
+      "value": "Standard_D2s_v3"
+    },
+    "storageAccountType": {
+      "value": "Standard_LRS"
+    }
+  }
+}
