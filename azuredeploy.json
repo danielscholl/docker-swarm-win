@@ -103,7 +103,7 @@
     "VNetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('VNetName'))]",
     "SubnetName": "default",
     "SubNetId": "[concat(variables('VNetId'), '/subnets/', variables('SubnetName'))]",
-    "NsgName": "[concat(variables('SubnetName'), '-nsg')]",
+    "NsgName": "[concat(parameters('prefix'), '-', variables('SubnetName'), '-nsg')]",
     "lBName": "[concat(parameters('prefix'), '-lb')]",
     "lBId": "[resourceId('Microsoft.Network/loadBalancers', variables('lBName'))]",
     "publicIpName": "[concat(parameters('prefix'),'-lb-ip')]",
@@ -334,7 +334,7 @@
     {
       "comments": "## Network Interface ##",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[concat(parameters('vmName'), copyindex(), '-nic')]",
+      "name": "[concat(parameters('prefix'), '-', parameters('vmName'), copyindex(), '-nic')]",
       "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "tags": {},
@@ -372,7 +372,7 @@
     {
       "comments": "## Virtual Machine ##",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[concat(parameters('vmName'), copyIndex())]",
+      "name": "[concat(parameters('prefix'), '-', parameters('vmName'), copyIndex())]",
       "apiVersion": "2016-04-30-preview",
       "location": "[resourceGroup().location]",
       "tags": {
