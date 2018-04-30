@@ -55,21 +55,21 @@ Example:
 
 
 _Swarm Master Init Example_
-```powershell
+```bash
 $IP=((ipconfig | findstr [0-9].\.)[0]).Split()[-1]
 docker swarm init --advertise-addr=${IP} --listen-addr ${IP}:2377
 
-# Sample Result
+# Example Result
 Swarm initialized: current node (iin85eksly3485m7m26ij7var) is now a manager.
 
 To add a worker to this swarm, run the following command:
 
-    docker swarm join --token SWMTKN-1-6au91oartntldko11lju7w3e77cd0inaclxa9nzsvkrje0dp1l-blhe5x08hn5v042j75c8xz1kj 10.1.0.4:2377
+    docker swarm join --token <your_token> 10.1.0.4:2377
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 ```
 
 _Swarm Worker Join Example_
-```powershell
+```bash
 docker swarm join --token <your_token> 10.1.0.4:2377
 ```
