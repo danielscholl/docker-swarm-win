@@ -1,0 +1,8 @@
+{
+  "itemDisplayName": "Simple Windows Swarm",
+  "icon": "windows",
+  "description": "This template creates a Windows Swarm.",
+  "summary": "This template deploys a Docker Swarm with a specified machine count but requires manual swarm init.",
+  "githubUsername": "danielscholl",
+  "dateUpdated": "2018-04-30"
+}
